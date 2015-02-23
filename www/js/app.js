@@ -43,7 +43,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     url: "/test",
     views: {
       'menuContent': {
-        templateUrl: "templates/test.html"
+        templateUrl: "templates/test.html",
+        controller: 'TestCtrl'
       }
     }
   })

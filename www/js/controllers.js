@@ -96,7 +96,8 @@ angular.module('starter.controllers', [])
 
     //-- test adaptation depuis l'app jquery
     var callbackFn = function(location) {
-        console.log('[BackgroundGeoLocation] Update callback:  ' + location.latitude + ',' + location.longitude);
+        // console.log('[BackgroundGeoLocation] Update callback:  ' + location.latitude + ',' + location.longitude);
+        console.log('[BG CALLBACK DUDE]');
     };
 
     var failureFn = function(error) {
@@ -110,21 +111,7 @@ angular.module('starter.controllers', [])
     // });
 
     // BackgroundGeoLocation is highly configurable.
-    $cordovaBackgroundGeolocation.configure(callbackFn, failureFn, {
-        // url: 'http://only.for.android.com/update_location.json', // <-- Android ONLY:  your server url to send locations to
-        // params: {
-        //     auth_token: 'user_secret_auth_token',    //  <-- Android ONLY:  HTTP POST params sent to your server when persisting locations.
-        //     foo: 'bar'                              //  <-- Android ONLY:  HTTP POST params sent to your server when persisting locations.
-        // },
-        desiredAccuracy: 0,
-        stationaryRadius: 1,
-        distanceFilter: 5,
-        notificationTitle: 'Background tracking', // <-- android only, customize the title of the notification
-        notificationText: 'ENABLED', // <-- android only, customize the text of the notification
-        activityType: 'AutomotiveNavigation',
-        debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
-        stopOnTerminate: false // <-- enable this to clear background location settings when the app terminates
-    });
+    $cordovaBackgroundGeolocation.configure(callbackFn, failureFn, options);
 
     // Turn ON the background-geolocation system.  The user will be tracked whenever they suspend the app.
     $cordovaBackgroundGeolocation.start();
@@ -142,12 +129,12 @@ angular.module('starter.controllers', [])
           $scope.lat_geo = startPos.coords.latitude;
           $scope.long_geo = startPos.coords.longitude;
         });
-        console.log("[GEOLOCAL BASIC] OK this time :)");
+        console.log("[GEOLOCAL BASIC] OK this time :), lat: "+startPos.coords.longitude);
       },
       function (error){
         console.log('[GEOLOCAL JS3] error with GPS: error.code: ' + error.code + ' Message: ' + error.message);
       },options);
-    }, 3000);
+    }, 4000);
 
 
 
